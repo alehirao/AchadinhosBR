@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achadinhos BR - Finalizar Compra</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/checkout.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <!-- SDK do Mercado Pago -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+</head>
+<body>
+    <header>
+        <!-- Mesmo header do index.html -->
+    </header>
+
+    <main class="checkout-container">
+        <div class="container">
+            <div class="checkout-progresso">
+                <div class="passo ativo" data-passo="1">
+                    <span>1</span>
+                    <p>Informações</p>
+                </div>
+                <div class="passo" data-passo="2">
+                    <span>2</span>
+                    <p>Pagamento</p>
+                </div>
+                <div class="passo" data-passo="3">
+                    <span>3</span>
+                    <p>Confirmação</p>
+                </div>
+            </div>
+            
+            <div class="checkout-conteudo">
+                <div class="checkout-formulario">
+                    <form id="form-info">
+                        <h2>Informações Pessoais</h2>
+                        <div class="form-group">
+                            <label for="nome">Nome Completo</label>
+                            <input type="text" id="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone</label>
+                            <input type="tel" id="telefone" required>
+                        </div>
+                        
+                        <h2>Endereço de Entrega</h2>
+                        <div class="form-group">
+                            <label for="cep">CEP</label>
+                            <input type="text" id="cep" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="endereco">Endereço</label>
+                            <input type="text" id="endereco" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="numero">Número</label>
+                            <input type="text" id="numero" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="complemento">Complemento</label>
+                            <input type="text" id="complemento">
+                        </div>
+                        <div class="form-group">
+                            <label for="bairro">Bairro</label>
+                            <input type="text" id="bairro" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cidade">Cidade</label>
+                            <input type="text" id="cidade" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="estado">Estado</label>
+                            <select id="estado" required>
+                                <!-- Opções de estados serão preenchidas via JavaScript -->
+                            </select>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-grande">Continuar para Pagamento</button>
+                    </form>
+                    
+                    <form id="form-pagamento" style="display: none;">
+                        <h2>Método de Pagamento</h2>
+                        <div class="metodos-pagamento">
+                            <div class="metodo" data-metodo="credito">
+                                <input type="radio" name="metodo" id="credito" checked>
+                                <label for="credito">Cartão de Crédito</label>
+                            </div>
+                            <div class="metodo" data-metodo="pix">
+                                <input type="radio" name="metodo" id="pix">
+                                <label for="pix">PIX</label>
+                            </div>
+                            <div class="metodo" data-metodo="boleto">
+                                <input type="radio" name="metodo" id="boleto">
+                                <label for="boleto">Boleto Bancário</label>
+                            </div>
+                        </div>
+                        
+                        <div class="dados-cartao" id="dados-cartao">
+                            <div class="form-group">
+                                <label for="numero-cartao">Número do Cartão</label>
+                                <input type="text" id="numero-cartao" placeholder="1234 5678 9012 3456">
+                            </div>
+                            <div class="form-group">
+                                <label for="nome-cartao">Nome no Cartão</label>
+                                <input type="text" id="nome-cartao" placeholder="Como no cartão">
+                            </div>
+                            <div class="form-group-duplo">
+                                <div class="form-group">
+                                    <label for="validade-cartao">Validade</label>
+                                    <input type="text" id="validade-cartao" placeholder="MM/AA">
+                                </div>
+                                <div class="form-group">
+                                    <label for="cvv-cartao">CVV</label>
+                                    <input type="text" id="cvv-cartao" placeholder="123">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="parcelas">Parcelas</label>
+                                <select id="parcelas">
+                                    <!-- Opções de parcelamento serão preenchidas via JavaScript -->
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="dados-pix" id="dados-pix" style="display: none;">
+                            <p>Você receberá o QR Code para pagamento após confirmar o pedido.</p>
+                        </div>
+                        
+                        <div class="dados-boleto" id="dados-boleto" style="display: none;">
+                            <p>Você receberá o boleto para pagamento após confirmar o pedido.</p>
+                        </div>
+                        
+                        <button type="button" class="btn btn-secundario" id="voltar-info">Voltar</button>
+                        <button type="submit" class="btn btn-grande">Finalizar Compra</button>
+                    </form>
+                    
+                    <div id="confirmacao" style="display: none;">
+                        <div class="confirmacao-sucesso">
+                            <h2>Compra realizada com sucesso!</h2>
+                            <p>Obrigado por comprar na Achadinhos BR.</p>
+                            <p>Seu pedido #<span id="numero-pedido"></span> foi recebido e está sendo processado.</p>
+                            <div id="info-pagamento">
+                                <!-- Informações de pagamento serão preenchidas via JavaScript -->
+                            </div>
+                            <a href="../index.html" class="btn btn-grande">Voltar à Loja</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="checkout-resumo">
+                    <h2>Seu Pedido</h2>
+                    <div class="resumo-produtos" id="resumo-produtos">
+                        <!-- Itens do pedido serão carregados via JavaScript -->
+                    </div>
+                    <div class="resumo-totais">
+                        <div class="resumo-linha">
+                            <span>Subtotal</span>
+                            <span id="resumo-subtotal">R$ 0,00</span>
+                        </div>
+                        <div class="resumo-linha">
+                            <span>Frete</span>
+                            <span id="resumo-frete">Grátis</span>
+                        </div>
+                        <div class="resumo-linha total">
+                            <span>Total</span>
+                            <span id="resumo-total">R$ 0,00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Mesmo footer do index.html -->
+    </footer>
+
+    <script src="../js/checkout.js"></script>
+</body>
+</html>

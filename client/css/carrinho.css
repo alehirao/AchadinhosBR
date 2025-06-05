@@ -1,0 +1,14 @@
+/* Estilos específicos para a página do carrinho */
+.carrinho-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.item-carrinho {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}

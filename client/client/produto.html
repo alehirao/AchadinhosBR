@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="produto-titulo">Achadinhos BR - Detalhes do Produto</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/produto.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <!-- Mesmo header do index.html -->
+    </header>
+
+    <main class="produto-detalhes-container">
+        <div class="container">
+            <div class="breadcrumb">
+                <a href="../index.html">Home</a> &gt; <a href="../index.html#produtos">Produtos</a> &gt; <span id="breadcrumb-produto">Produto</span>
+            </div>
+
+            <div class="produto-detalhes">
+                <div class="produto-galeria">
+                    <div class="imagem-principal">
+                        <img id="produto-imagem-principal" src="" alt="">
+                    </div>
+                    <div class="miniaturas">
+                        <!-- Miniaturas serão carregadas via JavaScript -->
+                    </div>
+                </div>
+
+                <div class="produto-info">
+                    <h1 id="produto-nome"></h1>
+                    <div class="produto-avaliacao">
+                        <div class="estrelas">
+                            ★★★★★
+                            <span class="avaliacao-texto">(12 avaliações)</span>
+                        </div>
+                    </div>
+                    <div class="produto-preco">
+                        <span id="produto-preco-atual"></span>
+                        <span id="produto-preco-antigo" class="preco-antigo"></span>
+                    </div>
+                    <p id="produto-descricao" class="produto-descricao"></p>
+
+                    <div class="produto-opcoes">
+                        <div class="quantidade">
+                            <label for="quantidade">Quantidade:</label>
+                            <input type="number" id="quantidade" min="1" value="1">
+                        </div>
+                    </div>
+
+                    <div class="produto-botoes">
+                        <button id="adicionar-carrinho" class="btn btn-grande">Adicionar ao Carrinho</button>
+                        <button id="comprar-agora" class="btn btn-grande btn-secundario">Comprar Agora</button>
+                    </div>
+
+                    <div class="produto-detalhes-adicionais">
+                        <div class="detalhe-item">
+                            <h3>Entrega</h3>
+                            <p>Frete grátis para todo o Brasil</p>
+                            <p>Entrega em 5-7 dias úteis</p>
+                        </div>
+                        <div class="detalhe-item">
+                            <h3>Devolução</h3>
+                            <p>30 dias para devolução gratuita</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="produto-relacionados">
+                <h2>Produtos Relacionados</h2>
+                <div class="produtos-grid">
+                    <!-- Produtos relacionados serão carregados via JavaScript -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Mesmo footer do index.html -->
+    </footer>
+
+    <script src="../js/produto.js"></script>
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achadinhos BR - Carrinho de Compras</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/carrinho.css">
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <header>
+        <!-- Mesmo header do index.html -->
+    </header>
+
+    <main class="carrinho-container">
+        <div class="container">
+            <h1>Seu Carrinho</h1>
+            
+            <div class="carrinho-conteudo">
+                <div class="carrinho-itens">
+                    <div class="carrinho-vazio" id="carrinho-vazio">
+                        <p>Seu carrinho está vazio</p>
+                        <a href="../index.html" class="btn">Continuar Comprando</a>
+                    </div>
+                    
+                    <table class="carrinho-tabela" id="carrinho-tabela">
+                        <thead>
+                            <tr>
+                                <th>Produto</th>
+                                <th>Preço</th>
+                                <th>Quantidade</th>
+                                <th>Total</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody id="carrinho-corpo">
+                            <!-- Itens do carrinho serão carregados via JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="carrinho-resumo" id="carrinho-resumo">
+                    <h2>Resumo do Pedido</h2>
+                    <div class="resumo-linha">
+                        <span>Subtotal</span>
+                        <span id="subtotal">R$ 0,00</span>
+                    </div>
+                    <div class="resumo-linha">
+                        <span>Frete</span>
+                        <span id="frete">Grátis</span>
+                    </div>
+                    <div class="resumo-linha total">
+                        <span>Total</span>
+                        <span id="total">R$ 0,00</span>
+                    </div>
+                    <a href="checkout.html" class="btn btn-grande" id="finalizar-compra">Finalizar Compra</a>
+                    <a href="../index.html" class="btn btn-grande btn-secundario">Continuar Comprando</a>
+                </div>
+            </div>
+            
+            <div class="produtos-recomendados">
+                <h2>Você também pode gostar</h2>
+                <div class="produtos-grid">
+                    <!-- Produtos recomendados serão carregados via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <!-- Mesmo footer do index.html -->
+    </footer>
+
+    <script src="../js/carrinho.js"></script>
+</body>
+</html>
